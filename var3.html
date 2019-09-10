@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <body>
+            <script>
+                
+                //with and undeclared variables 
+                //in the global, u retard
+                //no with in strict
+                function f(){
+                    //a=5;
+                    //console.log( "PREDI FOO", a ); //not declared
+                
+                    function foo(obj) {
+                        with (obj) {
+                            a = 2;
+                            console.log( "VUV F:", a); 
+                        }
+                        //return a;
+                    }
+
+                    var o1 = {
+                        a: 3
+                    };
+
+                    var o2 = {
+                        b: 3,
+                        //a: 4
+                    };
+
+                    foo(o1);
+                    console.log( o1.a ); // 2
+
+                    foo(o2);
+                    console.log( o2.a ); // undefined
+                    console.log( "VUV F:", a); // 2 -- Oops, leaked global!
+                }
+                //console.log( "NAVUN", a ); //not declared
+                f();
+                
+                console.log( "NAVUN", a ); //works
+                
+
+            </script>
+        </body>
+    </head>
+</html>

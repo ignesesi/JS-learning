@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <body>
+            <script>
+                //'use strict';
+                function ASDF(){
+                    function f(){
+                    //undeclared variables
+                        function foo() {
+                            a=2;
+                            console.log("In foo: ", a);
+                        }
+                        foo();
+                        console.log("After foo: ", a);
+                    }
+                    f();
+                    console.log("After f: ", a);
+                }
+                //console.log("After ASDF: ", a);//a in not defined
+                ASDF();
+                
+                console.log("After ASDF: ", a);//works
+            </script>
+        </body>
+    </head>
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <body>
+            <script>
+                
+                //nested scopes and undeclared variables
+                //window.VARIABLE -> the global variable
+                //window -> the global scope
+                var b="dsfg";
+                function foo(a){
+                    var b=a*2;
+                    function bar(c){
+                        console.log(a,window.b,c);
+                        function car(x){
+                            console.log("XXX",x);
+                            return x;
+                        }
+                        
+                        car(b);
+                    }
+                    bar(b*3);
+                }
+                foo(2);
+            </script>
+        </body>
+    </head>
+</html>

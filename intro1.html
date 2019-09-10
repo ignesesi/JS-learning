@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <body>
+            <script>
+
+                function calculateTax(amount){
+                    return amount + amount * TAX_RATE;
+                }
+
+                function formating(amount){
+                    amount = amount.toFixed(2);
+                    amount = '$' + amount;
+                    return amount;
+                }
+
+                const TAX_RATE = 0.08, PHONE_PRICE = 3, ACCESSORY_PRICE = 2, SPENDING_THRESHOLD = 50;
+                var balance = 100, amount = 0;
+                while(amount + PHONE_PRICE <= balance){
+                    amount += PHONE_PRICE;
+                    //balance -= PHONE_PRICE;
+                    if(amount < SPENDING_THRESHOLD && amount + ACCESSORY_PRICE <=balance){
+                        amount += ACCESSORY_PRICE;
+                        //balance -= ACCESSORY_PRICE;
+                    }
+                }
+
+                amount = calculateTax(amount);
+                balance += 10;
+
+                console.log ("Amount: ", formating(amount));
+                
+                if(amount <= balance){
+                    console.log ("Yes");
+                }else{
+                    console.log ("No");
+                }
+            </script>
+        </body>
+    </head>
+</html>
