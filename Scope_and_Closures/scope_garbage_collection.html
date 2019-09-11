@@ -3,26 +3,26 @@
         <body>
             <button id="my_button">Try it</button>
             <script>
-            /*
+            
                 function process(data) {
-                    // do something interesting
+                    console.log("PROCESS: ", data);
                 }
-
-                var someReallyBigData = { .. };//won't go away
-
-                process( someReallyBigData ); 
-
+                
+                var someReallyBigData = { a: 1 };//someReallyBigData do not go away
+                process( someReallyBigData );
+                
                 var btn = document.getElementById( "my_button" );
-
-                btn.addEventListener( "click", function click(evt){
+                
+                btn.addEventListener( "click", function click(){
                     console.log("button clicked");
-                }, false );
-            */
+                }, false ); 
+            
 
             /*
             Block-scoping can address this concern, making it clearer to the engine that it does not need to keep someReallyBigData around:
             */
-                function process(data) {
+            /*
+            function process(data) {
                     console.log("PROCESS: ", data);
                 }
                 
@@ -37,7 +37,8 @@
                 
                 btn.addEventListener( "click", function click(){
                     console.log("button clicked");
-                }, false ); 
+                }, false );
+            */
             </script>
         </body>
     </head>

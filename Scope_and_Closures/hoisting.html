@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <body>
+            <script>
+            a = 2;
+            var a;
+            console.log( a ); //2
+
+
+
+            console.log( b ); //undefined
+            var b = 2;
+
+
+
+            //foo(); // TypeError
+            //bar(); // ReferenceError
+            var foo = function bar() {
+                console.log("Function foo boo");
+            };
+
+
+/*
+            //equivalent
+            var foo;
+
+            //foo(); // TypeError
+            //bar(); // ReferenceError
+            var a=0;
+            foo = function() {
+                console.log("Function foo boo");
+                var bar = foo;
+                a++;
+                if(a>10) {return;}
+                bar();
+            }
+            foo();
+*/
+
+            f(); // 1
+            var f;
+            function f() {
+                console.log( "Esi", 1 );
+            }
+            f = function() {
+                console.log( "Esi", 2 );
+            };
+            f(); // 2
+/*
+            //equivalent; duplicate/multiple var declarations are ignored
+            function f() {
+                console.log(  "Esi", 1 );
+            }
+
+            f(); // 1
+
+            f = function() {
+                console.log( "Esi",  2 );
+            };
+            f(); //2
+*/
+
+            //but subsequently are overrided
+            over(); // 3
+
+            function over() {//this function doesn't exist
+                console.log( "Over", 1 );
+            }
+            over();//3
+
+            var over = function() { //second
+                console.log( "Over", 2 );
+            };
+            over();//2
+
+            function over() { //first
+                console.log( "Over", 3 );
+            }
+            over();//2
+            over();//2
+            </script>
+        </body>
+    </head>
+</html>

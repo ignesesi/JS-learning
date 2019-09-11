@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <body>
+            <script>
+/*
+Function declarations that appear inside of normal blocks typically hoist to the enclosing scope, 
+rather than being conditional as this code implies:
+However, it's important to note that this behavior is not reliable and is subject to change in future versions of JavaScript,
+so it's probably best to avoid declaring functions in blocks.
+*/
+
+            foo(); // "b" //type error not a function
+
+            var a = true;
+            if (a) {
+                function foo() { console.log( "a" ); }
+            }
+            else {
+                function foo() { console.log( "b" ); }
+            }
+            
+            foo(); // "b" // "a"
+
+            /*
+            //same here
+            var a = true;
+            if (a) {
+                var foo = function f() { console.log( "a" ); }
+            }
+            else {
+                var foo = function f() { console.log( "b" ); }
+            }
+            */
+
+            </script>
+        </body>
+    </head>
+</html>

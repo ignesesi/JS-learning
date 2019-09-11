@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <body>
+            <script>
+
+
+            //foo(); // "b"
+
+            var a = true;
+            if (a) {
+                var foo = function f() { console.log( "a" ); }
+            }
+            else {
+                var foo = function f() { console.log( "b" ); }
+            }
+            
+            foo(); // "b"
+
+            </script>
+        </body>
+    </head>
+</html>
