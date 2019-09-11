@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <body>
+            <script>
+            //unconditional exception
+            try {
+                throw 'myException'; // generates an exception
+            }
+            catch (e) {
+                // statements to handle any exceptions
+                console.log("Here: ", e); // pass exception object to error handler
+            }
+/*
+            //conditional exception non-standard not supported BAD
+            try {
+                throw 3; // may throw three types of exceptions
+            } catch (e if e instanceof TypeError) {
+            // statements to handle TypeError exceptions
+            } catch (e if e instanceof RangeError) {
+            // statements to handle RangeError exceptions
+            } catch (e if e instanceof EvalError) {
+            // statements to handle EvalError exceptions
+            } catch (e) {
+            // statements to handle any unspecified exceptions
+                console.log(e); // pass exception object to error handler
+            }
+*/
+            try {
+                throw 2; // may throw three types of exceptions
+            } 
+            //console.log("Bla");//missing catch ot finally
+            catch (e) {
+                if (e instanceof TypeError) {
+                    // statements to handle TypeError exceptions
+                } else if (e instanceof RangeError) {
+                    // statements to handle RangeError exceptions
+                } else if (e instanceof EvalError) {
+                    // statements to handle EvalError exceptions
+                } else {
+                    // statements to handle any unspecified exceptions
+                    console.log("If else: ", e); // pass exception object to error handler
+                }
+            }
+
+            </script>
+        </body>
+    </head>
+</html>

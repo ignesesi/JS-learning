@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <body>
+            <script>
+
+            //nested exceptions
+            //The outer try block catches the exception because there is no catch in the inner try block
+            try {
+                try {
+                    throw new Error('oops');
+                }
+                finally {
+                    console.log('finally');
+                }
+            }
+           catch (ex) { //without catch - unexpected error
+                console.error('outer', ex.message);
+            }
+            finally{
+                console.log("KRAI");
+            }
+            // Output:
+            // "finally"
+            // "outer" "oops"
+
+            console.log("###################");//###########
+            //Now, if we already caught the exception in the inner try-block by adding a catch block
+            try {
+                try {
+                    throw new Error('oops');
+                }
+                catch (ex) {
+                    console.error('inner', ex.message);
+                }
+                finally {
+                    console.log('finally');
+                }
+            }
+            catch (ex) {
+                console.error('outer', ex.message);
+            }
+            // Output:
+            // "inner" "oops"
+            // "finally"
+
+
+            console.log("###################");//###########
+            //And now, let's re-throw the error.
+            try {
+                try {
+                    throw new Error('oops');
+                }
+                catch (ex) {
+                    console.error('inner', ex.message);
+                    throw ex;
+                }
+                finally {
+                    console.log('finally');
+                }
+            }
+            catch (ex) {
+                console.error('outer', ex.message);
+            }
+
+            // Output:
+            // "inner" "oops"
+            // "finally"
+            // "outer" "oops"
+            /*
+            Any given exception will be caught only once by the nearest enclosing catch-block 
+            unless it is re-thrown. Of course, any new exceptions raised in the "inner" block 
+            (because the code in catch-block may do something that throws), will be caught by the "outer" block.
+            */
+            
+            
+
+            </script>
+        </body>
+    </head>
+</html>
