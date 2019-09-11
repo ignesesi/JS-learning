@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <body>
+            <script>
+                /*
+                Pollyfilling
+                ES6 defines a utility called Number.isNaN(..) to provide an accurate non-buggy check for NaN values, deprecating the original isNaN(..) utility. 
+                But it's easy to polyfill that utility so that you can start using it in your code regardless of whether the end user is in an ES6 browser or not.
+                The if statement guards against applying the polyfill definition in ES6 browsers where it will already exist. If it's not already present, we define Number.isNaN(..).
+                */
+
+                if (!Number.isNaN) {
+                    Number.isNaN = function isNaN(x) {
+                        return x !== x;
+                    };
+                }
+                /*
+                Transpiling
+                Here's a quick example of transpiling. ES6 adds a feature called "default parameter values." It looks like this:
+                Simple, right? Helpful, too! But it's new syntax that's invalid in pre-ES6 engines. So what will a transpiler do with that code to make it run in older environments?
+                */
+
+                function foo(a = 2) {
+                    console.log( a );
+                }
+
+                foo();		// 2
+                foo( 42 );	// 42
+                
+                /* transpiled code
+                function foo() {
+                    var a = arguments[0] !== (void 0) ? arguments[0] : 2;
+                    console.log( a );
+                }
+                */
+            </script>
+        </body>
+    </head>
+</html>

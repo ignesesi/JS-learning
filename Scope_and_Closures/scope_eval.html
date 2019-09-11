@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <body>
+            <script>
+                //"use strict";
+
+                eval("var a=5; console.log('Eval a: ', a); ");
+                console.log('After eval', a);//reference error in strict mode
+                //works without strict mode
+            </script>
+        </body>
+    </head>
+</html>

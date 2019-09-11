@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <body>
+            <script>
+                var obj={i:1};
+                function f(){
+                    with(obj){
+                        for (var i=0; i<10; i++) {
+                            console.log( i );
+                        }console.log( i );
+                        //changes obj.i
+                        var k="K is def";
+                    }
+                    console.log( "bad", i, typeof i, k);//if var i -> bad undefined undefined K is def wtf??
+                                        //if let i or just i-> reference error
+                }
+                f();
+                //console.log( "badbadbad", i ); //reference error
+
+
+                console.log("asdfgh", obj.i); //asdfg 10 obj.i is changed
+                obj={a:1};
+                console.log("Iiiiiiiii", obj.i); //Iiiiii undefined
+                function f1(){
+                    with(obj){
+                        for (j=0; j<10; j++) {
+                            console.log( j);
+                        }console.log( "####", j , obj.j);///#### 10 undefined
+                    }
+                    console.log( "bad", j , typeof j);//if var j  or just j -> bad 10
+                                        //if let j-> reference error
+                }
+                f1();
+                console.log( "badbadbad", j ); //if var or let j -> reference error
+                                            //if just j=0 -> badbadbad 10
+                
+                ///anonymos
+                var br=0;
+                var x = function bar(){
+                    console.log("Esiesiesi");
+                    br++;
+                    if(br>5) return;
+                    x();
+                    bar();//why works here
+                };
+                x();
+                //console.log(x.asd,x.bar);//undef undef
+                //bar();///why don't work here
+
+            </script>
+        </body>
+    </head>
+</html>

@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <body>
+            <script>
+                var foo = true;
+                if (foo) {
+                    { // <-- explicit block
+                        let bar = foo * 2;
+                        bar = bar*2;
+                        console.log( bar );
+                    }
+                    //console.log( bar ); // ReferenceError with let
+                }
+                //console.log( bar ); // ReferenceError with let
+                {
+                    //console.log( bar ); // ReferenceError! cannot access bar before declaration
+                    let bar = 2;
+                    console.log( bar ); // works!
+                }
+                //console.log( bar ); // ReferenceError!
+                console.log("Var a = ", a);//Var a = undefined; if let a -> error
+                var a = 5;
+                console.log("Var a = ", a);//Var a = 5
+
+                for (let i=0; i<10; i++) {
+                    console.log( i );
+                }
+                //console.log( i ); // ReferenceError
+
+                //equivalent to the above scope
+                {
+                    let j;
+                    for (j=0; j<10; j++) {
+                        let i = j; // re-bound for each iteration!
+                        console.log( i );
+                    }
+                }
+
+            </script>
+        </body>
+    </head>
+</html>

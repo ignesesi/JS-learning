@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <body>
+            <script>
+                try {
+                    undefined(); // illegal operation to force an exception!
+                }
+                catch (err) {
+                    console.log( "ESI", err ); // works!
+                }
+                
+                try {
+                    throw 2 // illegal operation to force an exception!
+                }
+                catch (err) {
+                    console.log( "ESI", err ); // works!
+                }
+                //console.log( err ); // ReferenceError: `err` not found
+            </script>
+        </body>
+    </head>
+</html>
