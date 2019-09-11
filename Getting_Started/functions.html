@@ -1,0 +1,47 @@
+<html>
+<head> </head>
+<body>
+<script>
+var foo = function() {
+	console.log("Foo");
+};
+
+var x = function bar(){
+	console.log("Bar");
+};
+
+f();
+
+foo();
+//bar(); //not defined???
+x();
+//bar();//not defined???
+
+
+function f() { 
+	console.log("FFFFFFFFFFFFFF");
+}
+
+// `f` function reference expression,
+// then `()` executes it
+f();
+
+// `IIFE` function expression,
+// then `()` executes it
+
+console.log(x);//wtf things bar() ??
+//nvm retard
+
+console.log(y);
+
+var y = (function IIFE(){
+	console.log("iifeiifeiife");
+	return 42;
+})();
+
+console.log(y);
+
+//IIFE(); //not defined
+</script>
+</body>
+</html>

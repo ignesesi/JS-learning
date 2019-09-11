@@ -1,0 +1,136 @@
+<html>
+<head> </head>
+<body>
+<script>
+/*
+///types and values
+var a;
+console.log(typeof a);				// "undefined"
+
+a = "hello world";
+console.log(typeof a);				// "string"
+
+a = 42;
+console.log(typeof a);				// "number"
+
+a = true;
+console.log(typeof a);				// "boolean"
+
+a = null;
+console.log(typeof a);				// "object" -- weird, bug
+
+a = undefined;
+console.log(typeof a);				// "undefined"
+
+a = { b: "c" };
+console.log(typeof a);				// "object"
+*/
+
+
+/*
+///object
+var obj = {
+	a: "hello world",
+	b: 42
+};
+
+var b = "a";
+
+console.log(obj[b]);		// "hello world"
+console.log(obj["b"]);		// 42
+*/
+
+/*
+///array
+var arr = [
+	"hello world",
+	42,
+	true
+];
+
+console.log(arr[0]);			// "hello world"
+console.log(arr[1]);			// 42
+console.log(arr[2]);			// true
+console.log(arr.length);		// 3
+
+console.log(typeof arr);		// "object"
+*/
+
+/*
+///function
+function foo() {
+	return "aaa";
+}
+
+foo.bar = "hello world";
+
+console.log(typeof foo);			// "function"
+console.log(typeof foo());		// "number"
+console.log(typeof foo.bar);		// "string"
+*/
+
+/*
+//built-in
+var a = "hello world";
+var b = 3.14159;
+
+console.log(a.length);			// 11
+console.log(a.toUpperCase());		// "HELLO WORLD"
+console.log(b.toFixed(4));		// "3.1416"
+console.log(a,b);			// hello world 3.14159
+*/
+
+/*
+//And here's an example of explicit coercion:
+var a = "42";
+
+var b = Number( a );
+
+console.log(a);				// "42"
+console.log(b);				// 42 -- the number!
+
+//And here's an example of implicit coercion:
+
+a = "42";
+
+b = a * 1;	// "42" implicitly coerced to 42 here
+*/
+
+/*
+///equality
+var a = "42";
+var b = 42;
+
+console.log(a == b);			// true
+console.log(a === b);		// false
+
+a = [1,2,3];
+b = [1,2,3];
+c = "1,2,3";
+
+console.log(a == c);		// true
+console.log(b == c);		// true
+console.log(a == b);		// false
+
+console.log(a === c);		// false
+console.log(b === c);		// false
+console.log(a === b);		// false
+*/
+
+//inequality
+var a = 41;
+var b = "42";
+var c = "43";
+
+console.log(a < b);		// true
+console.log(b < c);		// true
+
+a = 42;
+b = "foo";
+
+console.log(a < b);		// false
+console.log(a > b);		// false
+console.log(a == b);		// false
+</script>
+</body>
+</html>

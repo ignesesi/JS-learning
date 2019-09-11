@@ -1,0 +1,78 @@
+<html>
+<head> </head>
+<body>
+<script>
+
+/*
+//hoisting
+var a = 2;
+foo();					// works because `foo()`
+						// declaration is "hoisted"
+function foo() {
+	a = 3;
+	console.log( a );	// 3
+	var a;				// declaration is "hoisted"
+						// to the top of `foo()`
+}
+console.log( a );	// 2
+*/
+
+
+/*
+//nested scopes
+function foo() {
+	var a = 1;
+	function bar() {
+		var b = 2;
+		function baz() {
+			var c = 3;
+			console.log( a, b, c );	// 1 2 3
+		}
+		baz();
+		console.log( a, b);		// 1 2
+        //console.log( c );// c is not defined
+	}
+	bar();
+	console.log( a );				// 1
+}
+foo();
+*/
+
+
+/*
+//undeclared variables
+function foo() {
+	a = 1;	// `a` not formally declared
+}
+//console.log(a);			// reference error
+foo();
+console.log(a);			// 1 -- oops, auto global variable :(
+*/
+
+
+
+//block scopes let
+function foo() {
+	var a = 1;
+	if (a >= 1) {
+		let b = 2;
+		while (b < 5) {
+			let c = b * 2;
+			b++;
+			console.log( a + c );
+		}
+        //console.log( c );//reference error
+	}
+
+    //console.log( b );//reference error
+}
+//console.log( a );//reference error
+foo();
+//console.log( a );//reference error
+// 5 7 9
+
+
+
+</script>
+</body>
+</html>
