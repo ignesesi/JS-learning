@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <body>
+            <script>
+                //indirect
+            var fun;
+
+            var aaa = 2;
+            function asdf() {
+
+                function wtf() {
+                    console.log( aaa );
+                }
+
+                fun = wtf; // assign `wtf` to global variable
+            }
+            aaa++;// #
+            function whoa() {
+                fun(); // look ma, I saw closure!
+            }
+            asdf();
+            whoa(); // 2 //3 #
+
+            for (var i=1; i<=5; i++) {
+                setTimeout( function timer(){
+                    console.log("Not working 1first1", i );
+                }, i*1000 );
+            }
+            for (var i=1; i<=5; i++) {
+                (function(){
+                    setTimeout( function timer(){
+                        console.log("Not working 2second2", i );
+                    }, i*1000 );
+                })();
+            }
+            for (var i=1; i<=5; i++) {
+                (function(){
+                    var j = i;
+                    setTimeout( function timer(){
+                        console.log("Working 1first1", j );
+                    }, j*1000 );
+                })();
+            }
+            for (var i=1; i<=5; i++) {
+                (function(j){
+                    setTimeout( function timer(){
+                        console.log("Working 2second2", j );
+                    }, j*1000 );
+                })( i );
+            }
+            for (var i=1; i<=5; i++) {
+	            let j = i; // yay, block-scope for closure!
+                setTimeout( function timer(){
+                    console.log("Let 1first1", j );
+                }, j*1000 );
+            }
+            for (let i=1; i<=5; i++) {
+                setTimeout( function timer(){
+                    console.log("Let 2second2", i );
+                }, i*1000 );
+            }
+            </script>
+        </body>
+    </head>
+</html>

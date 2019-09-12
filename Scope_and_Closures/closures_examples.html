@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <body>
+            <script>
+                
+            var a = foo(1);
+            a();//1
+            var b=foo();
+            b();//undefined
+
+            function foo(a) {
+	            //var a = 2;
+
+                function bar() {
+                    console.log( a );
+                }
+
+                return bar;
+            }
+
+            var baz = foo(2);
+            //bar(); //reference error
+            baz(); // 2 -- Whoa, closure was just observed, man.
+            console.log("##############");
+            
+            //indirect
+            var fun;
+
+            function asdf() {
+                var aaa = 2;
+
+                function wtf() {
+                    console.log( aaa );
+                }
+
+                fun = wtf; // assign `wtf` to global variable
+            }
+
+            function whoa() {
+                fun(); // look ma, I saw closure!
+            }
+            asdf();
+            whoa(); // 2
+
+            ///setTimeOut
+            function wait(message) {
+
+                setTimeout( function timer(){
+                    console.log( "Whyyyy", message );
+                }, 0 );
+            }
+            wait("Hello Closure!");
+
+            function w(message) {
+
+                console.log( "Confused", message );
+                return w;
+            }
+            
+            var my_f = w( "MY CLOSURE" );
+            
+            console.log( "Here" );
+
+            function my_time(fn,time){
+                sleep(time);
+                fn();
+            }
+            console.log("Ehaa");
+            my_time(my_f,1000);
+
+
+            function sleep(milliseconds) {
+                var start = new Date().getTime();
+                while((new Date().getTime() - start) < milliseconds){
+                } 
+                //alert("woke up!");
+            }
+            
+            
+            /*
+            //jQuery
+            function setupBot(name,selector) {
+                $( selector ).click( function activator(){
+                    console.log( "Activating: " + name );
+                } );
+            }
+
+            setupBot( "Closure Bot 1", "#bot_1" );
+            setupBot( "Closure Bot 2", "#bot_2" );
+            */
+            </script>
+        </body>
+    </head>
+</html>

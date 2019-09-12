@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <body>
+            <script>
+
+            function add(a,b){
+                console.log("Here: ", a+b);
+                return a+b;
+            }
+            function subtract(a,b){
+                console.log("Here: ", a-b);
+                return a-b;
+            }
+            function multiply(a,b){
+                console.log("Here: ", a*b);
+                return a*b;
+            }
+            function divide(a,b){
+                console.log("Here: ", a/b);
+                //TODO: try catch /0
+                return a/b;
+            }
+
+            var f=[add,subtract,multiply,divide];
+
+            for(let i=0; i<4; i++){
+                console.log("For: ", f[i](8,2));
+            }
+            
+            console.log("###############");
+            
+            var wtf = [];
+            var operation = ['+','-','*','/'];
+            for(let i=0; i<4; i++){
+                let str = "console.log(a" + operation[i] + "b); return a" + operation[i] + "b;";
+                console.log(str);
+                wtf[i] = new Function ('a','b',str);
+            }
+
+            for(let i=0; i<4; i++){
+                console.log("Whoaaa: ", wtf[i](56,5));
+            }
+            
+            wtf[5] = f;
+            wtf[5][2](8,5);
+            wtf[4][2](8,5);
+            wtf[4][4] = f;
+            console.log(wtf[4][4][4]);
+            wtf[4][4][3](10,2);
+            console.log("LEN: ",wtf.length,wtf[4].length,wtf[4][4].length);
+            
+            </script>
+        </body>
+    </head>
+</html>

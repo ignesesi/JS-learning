@@ -7,26 +7,30 @@
                 of the entire try-catch-finally production, regardless of any return statements 
                 in the try and catch blocks. This includes exceptions thrown inside of the catch block:
                 */
-                (function() {
+                var x=(function() {
                     try {
                         try {
                             throw new Error('oops');
-                            return; //doesn't work
+                            return 1; //doesn't work
                         }
                         catch (ex) {
                             console.error('inner', ex.message);
                             throw ex;
-                            return; //doesn't work
+                            return 2; //doesn't work if there is a return in the finally
                         }
                         finally {
                             console.log('finally');
-                            return; //ONLY ONE WORKING
+                            return 3; //ONLY ONE WORKING
                         }
                     }
                     catch (ex) {
                         console.error('outer', ex.message);
+                        return 4;
                     }
                 })();
+
+
+                console.log("XXXXXXX", x);
 
                 // Output:
                 // "inner" "oops"

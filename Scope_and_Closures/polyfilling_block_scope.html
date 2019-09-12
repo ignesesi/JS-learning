@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <body>
+            <script>
+            {
+                let a = 2;
+                console.log( "Let: ", a ); // 2
+            }
+            
+            //console.log( a ); // ReferenceError
+            
+            //equivalent
+            try{throw 2}catch(a){
+                console.log( "Try catch: ", a ); // 2
+            }
+            //console.log( a ); // ReferenceError
+            
+            //with traceur
+            {
+                try {
+                    throw undefined;
+                } catch (a) {
+                    a = 2;
+                    console.log( "Traceur: ", a );
+                }
+            }
+
+            //console.log( a );//Reference error
+
+            /*
+            //let-er is needed; equivalent to the above valid syntax
+            let (a = 2) {
+                console.log( a ); // 2
+            }
+
+            console.log( a ); // ReferenceError
+            */
+
+            </script>
+        </body>
+    </head>
+</html>
