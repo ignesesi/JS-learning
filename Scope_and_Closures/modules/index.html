@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <body>
+            <script type="module" src="bar.js"></script>
+            
+            <script type="module" src="foo.js"></script>
+            
+            <script type="module" src="main.js">
+                // import the entire "foo" and "bar" modules
+                /*module foo from "foo.js";
+                module bar from "bar.js";*/
+                //import {hello} from "./bar.js";
+                /*import * as foo from "./foo.js";
+
+                console.log(
+                    bar.hello( "rhino" )
+                ); // Let me introduce: rhino
+
+                foo.awesome(); // LET ME INTRODUCE: HIPPO*/
+            </script>
+        </body>
+    </head>
+</html>

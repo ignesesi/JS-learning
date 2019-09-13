@@ -5,13 +5,13 @@
                 function hello(who) {
                     return "Let me introduce: " + who;
                 }
-
-                export hello;                
+                //hello("ASDF");
+                export {hello};     
             </script>
             
             <script type="module" id="foo.js">
-                // import only `hello()` from the "bar" module
-                import hello from "bar";
+            // import only `hello()` from the "bar" module
+                import {hello} from "./bar.js";
 
                 var hungry = "hippo";
 
@@ -20,20 +20,20 @@
                         hello( hungry ).toUpperCase()
                     );
                 }
-
-                export awesome;
+                //awesome();
+                export {awesome};
             </script>
             
             <script>
                 // import the entire "foo" and "bar" modules
-                module foo from "foo";
-                module bar from "bar";
+                import * as bar from "./bar.js";
+                import * as foo from "./foo.js";
 
                 console.log(
                     bar.hello( "rhino" )
                 ); // Let me introduce: rhino
 
-                foo.awesome(); // LET ME INTRODUCE: HIPPO
+                foo.awesome(); // LET ME INTRODUCE: HIPPO*/
             </script>
         </body>
     </head>

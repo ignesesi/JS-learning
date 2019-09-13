@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <body>
+            <script>
+                var obj = {
+                    id: "awesome",
+                    cool: function coolFn() {
+                        console.log( this.id );
+                    }
+                    /*cool: () => {
+                        console.log( this.id );
+                    }*/
+                };
+
+                var id = "not awesome";
+
+                obj.cool(); // awesome
+                obj.cool.apply(obj); // awesome
+                obj.cool.call(obj); // awesome
+                setTimeout(obj.cool(), 100 ); // awesome
+                setTimeout(obj.cool.bind(obj), 100 ); // awesome
+                setTimeout(obj.cool, 100 ); // not awesome
+
+                //=> everything is not awesome
+
+            </script>
+        </body>
+    </head>
+</html>

@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <body>
+            <script>
+            function Num(a) {
+                var value = Number(a);
+                //var value = a; //returns string why
+                function Convert (x) {
+                    if(typeof x == "object"){
+                        return x.getValue();
+                    }
+                    if(typeof x == "number"){
+                        return x;
+                    }
+                    /*
+                    if(typeof x == "string"){
+                        return Number(x);
+                    }*/
+                    console.error("Inappropriate value: ", typeof x);
+                    return NaN;
+                }
+
+                function Add (x) {
+                    //return value + b; //zalepq gi
+                    //return value - (- Convert(x));
+                    return value + x;
+                }
+                function Subtract (x) {
+                    return value - Convert(x);
+                }
+                function Multiply (x) {
+                    return value * Convert(x);
+                }
+                function Divide (x) {
+                    return value / Convert(x);
+                }
+
+                function GetValue () {
+                    return value; //why return string
+                }
+
+                var publicAPI = {
+                    add: Add,
+                    subtract: Subtract,
+                    multiply: Multiply,
+                    divide: Divide,
+                    getValue: GetValue
+                };
+
+                return publicAPI;
+            }
+
+            var value1 = Num(prompt("Enter a number"));
+            var value2 = Num(prompt("Enter a number"));
+            console.log(value1.add(value2));
+            console.log(value2.add(value1));
+            console.log(value1.subtract(value2.getValue()));//
+            console.log(value2.multiply(value1.getValue()));
+            console.log(value1.divide(value2));
+
+            </script>
+        </body>
+    </head>
+</html>

@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <body>
+            <script>
+            console.log("##############");
+            //############## every time when the function is invoked a new obj is created
+            function CoolModule() {
+                var something = "cool";
+                var another = [1, 2, 3];
+
+                function doSomething() {
+                    console.log( something );
+                }
+
+                function doAnother() {
+                    console.log( another.join( " ! " ) );
+                }
+
+                return {
+                    doSomething: doSomething,
+                    doAnother: doAnother
+                };
+            }
+
+            var foo = CoolModule();
+
+            foo.doSomething(); // cool
+            foo.doAnother(); // 1 ! 2 ! 3
+
+            console.log("##############");
+            //############## when is needed only one obj of this kind
+            var mod = (function Module() {
+                var something = "Module";
+                var another = ["a", 2, '-'];
+
+                function doSomething() {
+                    console.log( something );
+                }
+
+                function doAnother() {
+                    console.log( another.join( " ! " ) );
+                }
+
+                return {
+                    doSomething: doSomething,
+                    doAnother: doAnother
+                };
+            })();
+
+            mod.doSomething(); // cool
+            mod.doAnother(); // 1 ! 2 ! 3
+
+            console.log("##############");
+            //############## parameters
+            function Parameters(id) {
+                function identify() {
+                    console.log( id );
+                }
+
+                return {
+                    identify: identify
+                };
+            }
+
+            var p1 = Parameters( "foo 1" );
+            var p2 = Parameters( "foo 2" );
+
+            p1.identify(); // "foo 1"
+            p2.identify(); // "foo 2"
+
+            console.log("##############");
+            //############## same shit but returning a publicAPI obj and having parameters
+            var obj = (function Cool(id) {
+                function change() {
+                    // modifying the public API
+                    publicAPI.identify = identify2;
+                }
+
+                function identify1() {
+                    console.log( id );
+                }
+
+                function identify2() {
+                    console.log( id.toUpperCase() );
+                }
+
+                var publicAPI = {
+                    change: change,
+                    identify: identify1
+                };
+
+                return publicAPI;
+            })( "foo module" );
+
+            obj.identify(); // foo module
+            obj.change();
+            obj.identify(); // FOO MODULE
+
+
+            </script>
+        </body>
+    </head>
+</html>
