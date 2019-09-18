@@ -13,16 +13,18 @@
                 };
 
                 var id = "not awesome";
+        
+                var br = 0;
 
+                //obj.cool;//nothing
+                console.log(br);
                 obj.cool(); // awesome
                 obj.cool.apply(obj); // awesome
                 obj.cool.call(obj); // awesome
                 setTimeout(obj.cool(), 100 ); // awesome
                 setTimeout(obj.cool.bind(obj), 100 ); // awesome
                 setTimeout(obj.cool, 100 ); // not awesome
-
                 //=> everything is not awesome
-
             </script>
         </body>
     </head>
