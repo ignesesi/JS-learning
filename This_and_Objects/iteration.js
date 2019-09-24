@@ -33,8 +33,3 @@ console.warn("for of ARRAY");
 for (var v of myArray) {
 	console.log( v );
 }
-
-
-console.warn("forEach");
-console.warn("some");
-console.warn("every");
