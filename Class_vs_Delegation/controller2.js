@@ -2,14 +2,11 @@ class Controller {
     constructor(){
         this.errors = [];
     }
-    showDialog(){
-
-    }
     success(){
         alert("Success!");
     }
     failure(message){
-        alert("Fail: ", message);
+        alert("Fail: " + message);
     }
 }
 
@@ -25,31 +22,36 @@ class Login extends Controller{
     }
     validateEntry(){
         if(this.user == this.password) {
-            this.success();
+            super.success();
+            return true;
         } else {
             this.failure ("Wrong username or password!");
+            return false;
         }
     }
 }
 
-class Auth extends Controller{
+class Auth extends Login{
     constructor(){
         super();
-        this.login = new Login();
-    }
-    server(){
-
     }
     success(){
         alert("Auth!");
     }
     checkAuth(){
-        if(this.login.user == "admin") {
+        if(this.user == "admin") {
             this.success();
+            return true;
         } else {
             this.failure("Auth failed!");
+            return false;
         }
     }
 }
 
 var cont = new Auth();
+cont.getUser();
+cont.getPassword();
+if(cont.validateEntry()){
+    cont.checkAuth();
+}
